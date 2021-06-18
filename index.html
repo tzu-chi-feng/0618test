@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - geometry - spline extrusion</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+		<style>
+			body {
+				background-color: #f0f0f0;
+				color: #444;
+			}
+			a {
+				color: #08f;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+	</body>
+	<script type="module">
+		import * as THREE from './resources/threejs/r127/build/three.module.js';
+		 
+		function main() {
+		  const canvas = document.querySelector('#c');
+		  const renderer = new THREE.WebGLRenderer({canvas});
+		  const fov = 75;
+          const aspect = 2;  // 相机默认值
+          const near = 0.1;
+    	  const far = 5;
+    	  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+		  camera.position.z = 2;
+		  const scene = new THREE.Scene();
+		  const boxWidth = 1;
+          const boxHeight = 1;
+    	  const boxDepth = 1;
+    	  const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+		  const material = new THREE.MeshBasicMaterial({color: 0x44aa88});
+		  const cube = new THREE.Mesh(geometry, material);
+		  scene.add(cube);
+		  renderer.render(scene, camera);
+		}
+		  
+		</script>
+
+</html>
